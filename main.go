@@ -18,8 +18,8 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:  "funny-pc",
-		Width:  1024,
-		Height: 768,
+		Width:  2000,
+		Height: 1000,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
@@ -28,6 +28,7 @@ func main() {
 		Bind: []interface{}{
 			app,
 		},
+		Frameless: true,
 	})
 
 	if err != nil {

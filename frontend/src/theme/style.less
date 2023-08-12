@@ -1,0 +1,41 @@
+.arco-layout-content::-webkit-scrollbar{
+    display: none;
+}
+
+.main-header{
+    --wails-draggable:drag;
+    z-index: 3;
+    .main-header-buttonGroup{
+        --wails-draggable:no-drag;
+    }
+}
+
+.home{
+    
+    .videoNavBar{
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+        
+    }
+    .videoCardBox{
+        position: relative;
+        top: 70px;
+
+        .videoCard-desc{
+            .videoCard-desc-info{
+                height: 250px;
+            }
+        }
+    }
+    .videoCardBox::-webkit-scrollbar{
+        display: none;
+    }
+
+}
+.evd-main{
+    height: 100%;
+    width: 60%;
+    min-width: 500px;
+    margin: 0 auto;
+}

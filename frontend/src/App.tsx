@@ -1,26 +1,35 @@
-import {useState} from 'react';
-import logo from './assets/images/logo-universal.png';
-import './App.css';
-import {Greet} from "../wailsjs/go/main/App";
+import {useNavigate,useRoutes} from 'react-router-dom'
+import {Layout} from '@arco-design/web-react'
+import router from './router/router';
+import MainSider from './component/mainSider/mainSider';
+import MainHeader from './component/mainHeader/mainHeader';
+import { Suspense, useState } from 'react';
+import MainSpin from './component/mainSpin/mainSpin';
+import SecondMenu from './component/secondMenu/secondMenu';
+import "./theme/theme.less"
 
 function App() {
-    const [resultText, setResultText] = useState("Please enter your name below 👇");
-    const [name, setName] = useState('');
-    const updateName = (e: any) => setName(e.target.value);
-    const updateResultText = (result: string) => setResultText(result);
-
-    function greet() {
-        Greet(name).then(updateResultText);
+    const [theme,setTheme] = useState<string>("theme-dark")
+    const routers = useRoutes(router)
+    const nav = useNavigate()
+    const to = () =>{
+        nav('/')
     }
 
     return (
-        <div id="App">
-            <img src={logo} id="logo" alt="logo"/>
-            <div id="result" className="result">{resultText}</div>
-            <div id="input" className="input-box">
-                <input id="name" className="input" onChange={updateName} autoComplete="off" name="input" type="text"/>
-                <button className="btn" onClick={greet}>Greet</button>
-            </div>
+        <div className={theme}>
+            <Layout>
+            <Layout.Sider collapsed={true} style={{height:'100vh'}}><MainSider /></Layout.Sider>
+            <Layout >
+                <Layout.Header className="move"><MainHeader /></Layout.Header>
+                <Layout style={{marginTop:50}}>
+                <Layout.Content >
+                    <Suspense fallback={<MainSpin/>}>{routers}</Suspense>
+                </Layout.Content>
+                <Layout.Sider style={{width:"60px"}} className="second-menu"><SecondMenu /></Layout.Sider>
+                </Layout>
+            </Layout>
+            </Layout>
         </div>
     )
 }

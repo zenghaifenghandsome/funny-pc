@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -24,4 +26,19 @@ func (a *App) startup(ctx context.Context) {
 // Greet returns a greeting for the given name
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
+}
+
+// 关闭窗口
+func (a *App) CloseWind() {
+	runtime.Quit(a.ctx)
+}
+
+// 窗口最大化
+func (a *App) MaxWind() {
+	runtime.WindowToggleMaximise(a.ctx)
+}
+
+// 窗口最小化
+func (a *App) MinWind() {
+	runtime.WindowMinimise(a.ctx)
 }
