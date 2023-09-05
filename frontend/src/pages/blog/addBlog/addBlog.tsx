@@ -1,8 +1,9 @@
 import { Button, Card, Input } from "@arco-design/web-react";
-import Md from '../../../../node_modules/md-editor-rt';
+import {MdEditor} from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 import './addBlog.less';
 import { useEffect, useState } from "react";
+import { api_addBlog } from "../../../tools/ajax";
 
 const AddBlog = () =>{
     const [blogVal,setBlogVal] = useState<any>()
@@ -17,8 +18,14 @@ const AddBlog = () =>{
             setBlogHeight(windowHeight-height-85)
         })
     },[])
-    const release = () =>{
-        
+    
+    // 发布博客
+    const release = async () =>{
+        let blog = {
+
+        };
+        let result:any = await api_addBlog(blog);
+        console.log(result.data)
     }
     return(
         <>
@@ -27,7 +34,7 @@ const AddBlog = () =>{
                 <Button type="outline" className="blog-edit-title-button blog-edit-title-caogao">草稿箱</Button>
                 <Button type="primary" className="blog-edit-title-button" onClick={release}>发布</Button>
             </Card>
-            <Md modelValue={blogVal} onChange={setBlogVal} style={{height:blogHeight+"px"}}/>
+            <MdEditor modelValue={blogVal} onChange={setBlogVal} style={{height:blogHeight+"px"}}/>
         </>
     )
 }

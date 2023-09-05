@@ -17,7 +17,7 @@ const Todo = lazy(()=> import('../pages/todo/todo'))
 const Admin = lazy(()=>import('../pages/admin/admin'))
 const Register = lazy(()=> import('../pages/register/register'))
 const UserCenter = lazy(()=>import('../pages/userCenter/userCenter'))
-const UserInfo = lazy(()=>import("../pages/userCenter/userInfo/userInfo"))
+const UserInfo = lazy(()=>import("../pages/userCenter/userinfo/userinfo"))
 const Evd = lazy(()=>import("../pages/evd/evd"))
 
 const router:RouteObject[] = [

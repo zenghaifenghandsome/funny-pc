@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import {useState,useEffect} from 'react';
-import Md from '../../../../node_modules/md-editor-rt';
+import {MdEditor} from 'md-editor-rt';
 import { api_getThisBlog } from "../../../tools/ajax";
 import 'md-editor-rt/lib/style.css';
 import {Avatar, Button, Card} from '@arco-design/web-react'
@@ -45,7 +45,7 @@ const BlogShow = () =>{
             </div>
           </div>
           <div style={{margin:'0 10px'}}>{article.blogarticlepic.length===0?<></>:<img src={article.blogarticlepic} alt="pic" style={{width:'100%'}} />}</div>
-          <Md modelValue={article.blogdetail} previewOnly className="md"/>
+          <MdEditor modelValue={article.blogdetail} preview className="md"/>
         </div>
         
       </Card>
