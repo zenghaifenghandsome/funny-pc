@@ -1,7 +1,7 @@
 import MainSpin from "../../component/mainSpin/mainSpin"
 import {Carousel} from '@arco-design/web-react';
 import { useEffect, useState } from "react";
-import { api_getMusicBanner } from "../../tools/ajax";
+//import { api_getMusicBanner } from "../../tools/ajax";
 const Music = () =>{
     const [recommentMusic,setRecommentMusic] = useState<any>([])
     const [bannerHeight,setBannerHeight] = useState<number>(0)
@@ -10,10 +10,10 @@ const Music = () =>{
         window.onresize = () =>{
             setBannerHeight(3/16*window.innerWidth)
         }
-        api_getMusicBanner().then((req:any)=>{
-            console.log(req.data.banners)
-            setRecommentMusic(req.data.banners)
-        }).catch((err:any)=>{console.log(err)})
+        //api_getMusicBanner().then((req:any)=>{
+        //    console.log(req.data.banners)
+        //    setRecommentMusic(req.data.banners)
+        //}).catch((err:any)=>{console.log(err)})
     },[])
     return(
         <>

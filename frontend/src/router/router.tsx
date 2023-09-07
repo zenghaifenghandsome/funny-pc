@@ -19,6 +19,8 @@ const Register = lazy(()=> import('../pages/register/register'))
 const UserCenter = lazy(()=>import('../pages/userCenter/userCenter'))
 const UserInfo = lazy(()=>import("../pages/userCenter/userinfo/userinfo"))
 const Evd = lazy(()=>import("../pages/evd/evd"))
+const HareEditor = lazy(()=>import("../pages/home/shareEditor/shareEditor"))
+
 
 const router:RouteObject[] = [
     {
@@ -76,6 +78,9 @@ const router:RouteObject[] = [
     },{
         path:"/evd",
         element:<Evd />
+    },{
+        path:"/share/editor",
+        element:<HareEditor />
     }
 ]
 

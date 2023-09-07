@@ -1,5 +1,5 @@
 import { Avatar, Button, Divider, Dropdown, Menu, Notification } from "@arco-design/web-react";
-import {IconMusic,IconBook} from '@arco-design/web-react/icon'
+import {IconMusic,IconBook, IconEdit} from '@arco-design/web-react/icon'
 import { useNavigate } from "react-router-dom";
 import {removeUser} from "../../tools/localstore";
 import CodeAdd from "../codeAdd/codeAdd";
@@ -32,7 +32,9 @@ const SecondMenu = () =>{
 
   const userinfo = useSelector((state:any)=> state.user.value)
   const dispatch = useDispatch()
-  
+  const shareHandle = () =>{
+    route('/share/editor')
+  }
   
   const toblogEditor = () =>{
     route('/blog/addBlog')
@@ -77,6 +79,7 @@ const SecondMenu = () =>{
         }
         </Dropdown>
         <Divider style={{margin:'5px 0'}}/>
+        <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} icon={<IconEdit />} onClick={shareHandle}/>
         <CodeAdd />
         <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} icon={<IconMusic />} onClick={musicHandle}/>
         <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} icon={<IconBook />} onClick={toblogEditor}/>

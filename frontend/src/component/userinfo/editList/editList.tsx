@@ -15,22 +15,21 @@ const EditList = (props:any) =>{
         console.log(props)
     },[])
 
-    const doEditOk = () =>{
+    const doEditOk = async() =>{
         console.log(propsValue)
         let updata = {
             userid:userinfo.userid,
             field:props.label,
             newDate:propsValue,
         }
-        api_updataUserInfoOneField(updata).then((req:any)=>{
-            console.log(req.data);
-            if(req.data.status===200){
-                Message.success("修改成功！！！")
-                setVisible(false);
-            }else{
-                Message.error("修改失败！！")
-            }
-        }).catch((err:any)=>{ console.log(err)})
+        let result:any = await api_updataUserInfoOneField(updata)
+        if(result.status===200){
+            Message.success("修改成功！！！")
+            setVisible(false);
+        }else{
+            Message.error("修改失败！！")
+        }
+        
     }
     return(
         <div style={{display:"flex",marginTop:10}}>
