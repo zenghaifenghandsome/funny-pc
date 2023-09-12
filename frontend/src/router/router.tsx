@@ -20,12 +20,18 @@ const UserCenter = lazy(()=>import('../pages/userCenter/userCenter'))
 const UserInfo = lazy(()=>import("../pages/userCenter/userinfo/userinfo"))
 const Evd = lazy(()=>import("../pages/evd/evd"))
 const HareEditor = lazy(()=>import("../pages/home/shareEditor/shareEditor"))
-
+const AllShare = lazy(()=>import("../pages/home/shares/allShare"))
 
 const router:RouteObject[] = [
     {
         path:'/',
         element:<Home />,
+        children:[
+            {
+                path:'/share',
+                element: <AllShare />
+            }
+        ]
     },{
         path:'/bc',
         element:<Bc />,

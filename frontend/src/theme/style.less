@@ -1,3 +1,6 @@
+::-webkit-scrollbar{
+    width: 1px;
+}
 .arco-layout-content::-webkit-scrollbar{
     display: none;
 }
@@ -10,32 +13,55 @@
     }
 }
 
-.home{
-    
-    .videoNavBar{
-        position: fixed;
-        width: 100%;
-        z-index: 1;
-        
-    }
-    .videoCardBox{
-        position: relative;
-        top: 70px;
-
-        .videoCard-desc{
-            .videoCard-desc-info{
-                height: 250px;
-            }
-        }
-    }
-    .videoCardBox::-webkit-scrollbar{
-        display: none;
-    }
-
-}
 .evd-main{
     height: 100%;
     width: 60%;
     min-width: 500px;
     margin: 0 auto;
+}
+.home{
+    height: 100%;
+    .home-content{
+        height: 100%;
+        display: grid;
+        grid-template-columns: 182px 640px 282px;
+        justify-content: center;
+        .main-share-header{
+            display: grid;
+            grid-template-columns: 70px auto 100px;
+        }
+        .main-share-content{
+            margin-left: 74px;
+        }
+        .home-left {
+            margin-right: 10px;
+            height: 100%;
+            .home-left-main{
+                font-size: 22px;
+                font-weight: 500;
+                padding: 16px 10px 12px;
+            }
+            .home-left-all-share{
+                font-size: 15px;
+                line-height: 24px;
+                font-weight: 500;
+                cursor: pointer;
+                padding: 8px 10px;
+            }
+        }
+        .home-right{
+            margin-left: 10px;
+            height: 100%;
+        }
+    }
+    .main-share-footer{
+        display: grid;
+        grid-template-columns: repeat(3,auto);
+        justify-items: center;
+        margin-top: 10px;
+    }
+}
+.shareEditor-cancelBnt:hover{
+    cursor: pointer;
+    color: blueviolet;
 }

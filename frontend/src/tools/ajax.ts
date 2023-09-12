@@ -32,7 +32,10 @@ export const api_updataUserInfoOneField = (updata:any) => ajax(baseURL+"/user/up
 
 export const api_upload = (file:any) => ajax(baseURL+"/update",file,"POST")
 
-
+// share
+export const api_addShare = (share:any) => ajax(baseURL+"/share/add",share,"POST")
+export const api_getAllShare = () => ajax(baseURL+"/share/getAll")
+//bc
 export const api_addBc = (bc:any) => ajax(baseURL+"/biancheng",bc,"POST")
 export const api_getAllBCs = () => ajax(baseURL+"/biancheng")
 export const api_getAllOkBc = () => ajax(baseURL+"/biancheng/okAllBiancheng")
