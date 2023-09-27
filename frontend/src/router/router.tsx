@@ -4,6 +4,7 @@ import AdminNav from '../pages/admin/adminNav';
 import AdminBC from '../pages/admin/pages/adminBC';
 import AdminBlog from '../pages/admin/pages/adminBlog';
 
+
 const Home = lazy(()=>import("../pages/home/home"))
 const Bc = lazy(()=> import("../pages/bc/bc"))
 const BcDetail = lazy(()=> import("../pages/bc/bcDetail/bcDetail"))
@@ -21,6 +22,14 @@ const UserInfo = lazy(()=>import("../pages/userCenter/userinfo/userinfo"))
 const Evd = lazy(()=>import("../pages/evd/evd"))
 const HareEditor = lazy(()=>import("../pages/home/shareEditor/shareEditor"))
 const AllShare = lazy(()=>import("../pages/home/shares/allShare"))
+const LatestShare = lazy(()=> import('../pages/home/shares/latestshare'))
+const AllAttention = lazy(()=> import('../pages/home/shares/allAttention'))
+const SpecialAttention = lazy(()=> import('../pages/home/shares/specialAttention'))
+const ShareFriends = lazy(()=> import('../pages/home/shares/ShareFriends'))
+const ShareClassHome = lazy(() => import('../pages/home/shareClass/shareClassHome'))
+const ShareClassHot = lazy(() => import('../pages/home/shareClass/shareClassHot'))
+const OwnerPage = lazy(() => import('../pages/userCenter/pages/ownerPage'))
+const OwnerAttention = lazy(() => import('../pages/userCenter/pages/ownerAttention'))
 
 const router:RouteObject[] = [
     {
@@ -29,8 +38,30 @@ const router:RouteObject[] = [
         children:[
             {
                 path:'/share',
-                element: <AllShare />
+                element: <ShareClassHome />,
+                children:[
+                     {
+                        path:'/share/allshare',
+                        element: <AllShare />
+                    },{
+                        path:'/share/latestshare',
+                        element: <LatestShare />
+                    },{
+                        path:'/share/allattention',
+                        element: <AllAttention />
+                    },{
+                        path:'/share/specialattention',
+                        element: <SpecialAttention />
+                    },{
+                        path:'/share/friends',
+                        element: <ShareFriends />
+                    }
+                ]
+            },{
+                path:'/hotshare',
+                element:<ShareClassHot />
             }
+           
         ]
     },{
         path:'/bc',
@@ -70,14 +101,22 @@ const router:RouteObject[] = [
                 path:"/admin/blog",
                 element:<AdminBlog />
             }
-
         ]
     },{
         path:"/register",
         element:<Register />
     },{
         path:"/userCenter",
-        element:<UserCenter />
+        element:<UserCenter />,
+        children:[
+            {
+                path:'/userCenter/ownerpage',
+                element: <OwnerPage />
+            },{
+                path:'/userCenter/ownerattention',
+                element: <OwnerAttention />
+            }
+        ]
     },{
         path:"/editUserInfo",
         element:<UserInfo />

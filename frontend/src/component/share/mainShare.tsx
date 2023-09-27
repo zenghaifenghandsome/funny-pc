@@ -12,12 +12,12 @@ const MainShare:FC<mainShareProps> = (props:mainShareProps) => {
     const [userinfo,setUserinfo] = useState<any>()
     const getUserinfo = async () => {
         let result:any = await api_getUserInfo(props.userid)
-        //console.log(result)
+        console.log(result)
         setUserinfo(result.data)
     }
     useEffect(()=>{
         getUserinfo()
-        console.log(props.piclist)
+        //console.log(props.piclist)
     },[])
     return(
         <>
@@ -29,14 +29,14 @@ const MainShare:FC<mainShareProps> = (props:mainShareProps) => {
                         <img src={userinfo?.avater}/>
                     </Avatar>
                     <div style={{padding:'0 8px'}}>
-                        <div style={{fontSize:15,color:'var(--w-main)',fontWeight:'bolder'}}>{userinfo?.nickname === null? userinfo?.username:userinfo?.nickname }</div>
-                        <div>info</div>
+                        <div className="main-share-header-nickname" style={{fontSize:15,fontWeight:'bolder'}}>{userinfo?.nickname === "" ? userinfo?.username:userinfo?.nickname }</div>
+                        <div className="main-share-header-info">info</div>
                     </div>
                     <Button shape="round" status='warning' type='primary'>+关注</Button>
                 </div>
                 <div className="main-share-content">
-                    <div>{props.content}</div>
-                    <div>{props.piclist?.map((pic:any) => <Image width={130} style={{margin:'0px 0px 0px 5px'}} src={pic} key={pic}/>)}</div>
+                    <div className="main-share-content-content">{props.content}</div>
+                    <div>{props.piclist?.map((pic:any) => <Image width={130} style={{margin:'5px 5px 0px 0px'}} src={pic} key={pic}/>)}</div>
                 </div>
                 
                 <div className="main-share-footer">

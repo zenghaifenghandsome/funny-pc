@@ -22,6 +22,16 @@
         
     }
     .home{
+        #header-bnt-active{
+            background-color: var(--w-brand);
+        }
+        .home-header-home-bnt{
+            background-color: var(--w-card-bg);
+        }
+        .home-header-home-bnt:hover{
+            background-color: var(--w-brand);
+            // color:var(--w-brand) ;
+        }
         .videoNavBar{
             background-color: var(--d-bg-2);
             border-color: var(--d-bg-2);
@@ -45,6 +55,15 @@
             background-color: var(--w-card-bg);
             color: var(--w-main);
             border: 1px solid var(--w-card-border);
+        }
+        .main-share-header-nickname{
+            color:var(--w-main-title);
+        }
+        .main-share-header-info{
+            color: var(--w-sub);
+        }
+        .main-share-content-content{
+            color: var(--w-main);
         }
     }
     
@@ -71,5 +90,43 @@
     }
     .evd-main{
         background-color: antiquewhite;
+    }
+}
+
+.user-center{
+   
+    .user-center-left{
+        color: var(--w-main);
+        .user-center-left-active{
+            color: var(--w-brand);
+        }
+       
+    }
+    
+    .user-center-content{
+        .owner-page{
+           background-color: var(--w-card-bg);
+           color: var(--w-sub);
+        }
+        .user-center-content-desc{
+            background-color: var(--w-card-bg);
+            color: var(--w-sub);
+        }
+        .user-center-content-main{
+            background-color: #191919;
+        }
+        .user-center-content-cancel{
+            color: #888;
+        }
+        .user-center-content-header{
+            background-color: var(--w-card-bg);
+            width: 100%;
+            .user-center-content-username{
+               color: var(--w-main);
+            }
+            .user-center-content-user-tag{
+                color: var(--w-sub);
+            }
+        }
     }
 }

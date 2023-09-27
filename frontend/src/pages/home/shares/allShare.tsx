@@ -8,9 +8,9 @@ const AllShare = () => {
 
     const getAllShare = async() =>{
         let result:any = await api_getAllShare()
-        console.log(result)
+        //console.log(result)
         setShare(result.data)
-        console.log(share)
+       // console.log(share)
     }
     useEffect(()=>{
         getAllShare()
@@ -21,6 +21,7 @@ const AllShare = () => {
             <div>
                 {share.length > 0 ? share.map((s:any)=> 
                 <MainShare 
+                key={s.ID}
                 id={s.ID} 
                 userid={s.userid} 
                 content={s.content}

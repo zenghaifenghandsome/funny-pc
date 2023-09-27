@@ -22,15 +22,18 @@ const UserInfo = () =>{
     const toUserCenter = () =>{
         route("/userCenter");
     }
+    const getUserInfo = async (id:number) =>{
+        let result:any = await api_getUserInfo(id)
+       // console.log(result)
+        setInfo(result.data)
+    }
     useEffect(()=>{
-        const getUserInfo = async (id:number) =>{
-            let result:any = await api_getUserInfo(id)
-            setInfo(result.userinfo)
-        }
+        
         if(userinfo===null || userinfo===undefined){
             route("/login")
         }else{
            getUserInfo(userinfo.userid)
+          // console.log(info)
         }
        
     },[userinfo])
@@ -51,7 +54,7 @@ const UserInfo = () =>{
     const uploads = async (formData:any) =>{
         //console.log(formData)
         let user:any = await api_upload(formData)
-        console.log(user.url)
+        //console.log(user.url)
         await updataUserInfoOneField({
             userid:userinfo.userid,
             field:"avater",
@@ -63,7 +66,7 @@ const UserInfo = () =>{
         //console.log("ssssssssssssssssssssss")
         const formData:FormData = new FormData();
         formData.append("imgfile",file)
-        console.log(formData.get("imgfile"))
+        //console.log(formData.get("imgfile"))
         uploads(formData)
     }
 

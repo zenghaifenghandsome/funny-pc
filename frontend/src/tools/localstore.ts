@@ -12,7 +12,8 @@ export const removeUser = () => store.remove("user")
 export const userUpdata = async () =>{
     let newUser = store.get("user")
     let result:any = await api_getUserInfo(newUser.userid)
-    newUser.avator = result.userinfo.avater;
+    console.log(result)
+    newUser.avator = result.data.avater;
     saveUser(newUser);
     // api_getUserInfo(newUser.userid).then((req:any)=>{
     //     newUser.avator=req.data.userinfo.avater

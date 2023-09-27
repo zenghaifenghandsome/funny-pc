@@ -1,52 +1,39 @@
 import { useEffect, useState} from 'react';
-import {Card} from "@arco-design/web-react";
+import {Card, Input} from "@arco-design/web-react";
 
 
 import { Outlet, useNavigate } from 'react-router-dom';
+import { IconFire, IconHome } from '@arco-design/web-react/icon';
 const Home = () =>{
     const route = useNavigate();
-    const [active,setActive] = useState<number>(1)
+    const [headerIndex,setHeaderIndex] = useState<number>(1)
     useEffect(()=>{
-        route("/share")
+        route("/share/allshare")
     },[])
-    const onSelect = (index:number) =>{
-        setActive(index);
-    }
+    
     return (
         <div className='home'>
             <Card style={{
+                position:'fixed',
+                top:50,
+                width:'100%',
+                zIndex:1,
+                height:57,
                 backgroundColor:'var(--w-card-bg)',
                 padding:0,
-                border:'1px solid var(--w-card-border)'}}></Card>
-            <div className='home-content'>
-                <div className='home-left'>
-                    <div className='home-left-main' >首页</div>
-                    <div 
-                    className={'home-left-all-share'+ (active===1?' home-left-all-share-active':'')}
-                    onClick={()=> onSelect(1)}
-                    >全部分享</div>
-                    <div 
-                    className={'home-left-all-share' + (active===2?' home-left-all-share-active':'')}
-                    onClick={()=> onSelect(2)}
-                    >最新分享</div>
-                    <div 
-                    className={'home-left-all-share' + (active===3?' home-left-all-share-active':'')}
-                    onClick={()=> onSelect(3)}
-                    >全部关注</div>
-                    <div 
-                    className={'home-left-all-share' + (active===4?' home-left-all-share-active':'')}
-                    onClick={()=> onSelect(4)}
-                    >特别关注</div>
-                    <div 
-                    className={'home-left-all-share' + (active===5?' home-left-all-share-active':'')}
-                    onClick={()=> onSelect(5)}
-                    >好友圈</div>
-                </div>
-                <Outlet />
-                <div className='home-right'>
-                    <div>热搜</div>
-                </div>
-            </div>
+                border:'1px solid var(--w-card-border)'}}
+                bodyStyle={{display:'grid',gridTemplateColumns:'72px 72px 200px',justifyContent:'center'}}
+                >
+                    <IconHome  className='home-header-home-bnt' id={(headerIndex===1? 'header-bnt-active':'')} 
+                        onClick={()=> {setHeaderIndex(1);route('/share/allshare')}}
+                    />
+                    <IconFire  className='home-header-home-bnt' id={(headerIndex===2? 'header-bnt-active':'')} 
+                        onClick={()=> {setHeaderIndex(2);route('/hotshare')}}
+                    />
+                    <Input.Search placeholder='搜索分享'/>
+                    
+                </Card>
+            <Outlet />
         </div>
         
     )

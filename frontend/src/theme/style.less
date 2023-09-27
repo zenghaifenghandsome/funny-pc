@@ -20,8 +20,14 @@
     margin: 0 auto;
 }
 .home{
+    min-height: 100%;
     height: 100%;
+    .home-header-home-bnt{
+       width: 70px;
+       height: 30px;
+    }
     .home-content{
+        margin-top: 57px;
         height: 100%;
         display: grid;
         grid-template-columns: 182px 640px 282px;
@@ -33,7 +39,10 @@
         .main-share-content{
             margin-left: 74px;
         }
+        
         .home-left {
+           
+            margin-top: 10px;
             margin-right: 10px;
             height: 100%;
             .home-left-main{
@@ -42,6 +51,7 @@
                 padding: 16px 10px 12px;
             }
             .home-left-all-share{
+               
                 font-size: 15px;
                 line-height: 24px;
                 font-weight: 500;
@@ -49,9 +59,18 @@
                 padding: 8px 10px;
             }
         }
+        
         .home-right{
+            position: sticky;
+            top: 0;
+            margin-top: 10px;
             margin-left: 10px;
             height: 100%;
+            .home-right-main{
+                font-size: 16px;
+                font-weight: 500;
+                padding: 16px 10px 12px;
+            }
         }
     }
     .main-share-footer{
@@ -64,4 +83,118 @@
 .shareEditor-cancelBnt:hover{
     cursor: pointer;
     color: blueviolet;
+}
+.user-center{
+    display: flex;
+    margin: auto;
+    max-width: 832px;
+    height: 100%;
+    .user-center-left{
+        margin-top: 1px;
+        width: 182px;
+        margin-right: 8px;
+        height: 100%;
+        position: sticky;
+        top: 0px;
+        border-color: #222;
+        overflow-y: auto;
+        border-radius: 4px 4px 0 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+        padding: 0 4px 40px;
+        border-left: 1 solid #222 ;
+        background-color: #191919;
+        .user-center-left-select{
+            font-size: 15px;
+            line-height: 24px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 8px 10px;
+        }
+       
+    }
+    
+    .user-center-content{
+        margin-top: 1px;
+        position: relative;
+        width: 642px;
+        min-width: 642px;
+        .owner-page{
+            height: 400px;
+            width: 100%;
+            margin-top: 8px;
+        }
+        .user-center-content-desc{
+           min-height: 50px;
+           padding: 10px;
+        }
+        .user-center-content-main{
+            margin-top: 1px;
+            height: 300px;
+            margin-top: 8px;
+        }
+        .user-center-content-cancel{
+            margin-top: 1px;
+            margin-bottom: calc(-1*44px);
+            z-index: 1;
+            position: sticky;
+            top: 0px;
+            margin-left: 10px;
+            margin-top: 5px;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 22px;
+            cursor: pointer;
+        }
+        .user-center-bk{
+            margin-top:1px;
+            object-fit: cover;
+            border-radius: inherit;
+            height: 361px;
+            left: 0;
+            position: relative;
+            top: 0;
+            width: 100%;
+            overflow-clip-margin: content-box;
+            overflow: clip;
+            cursor: pointer;
+        }
+        .user-center-content-header{
+            position: relative;
+            display: flex;
+            //margin: 10px 20px 10px 22px;
+            align-items: flex-start;
+            -webkit-box-align: start;
+            .user-center-content-header-center{
+                width: 60%;
+            }
+            .user-center-content-username{
+                line-height: 20px;
+                font-size: 16px;
+                font-weight: 700;
+                align-items: center;
+                -webkit-box-align: center;
+            }
+            .user-center-content-avator{
+                width: 6.25rem;
+                height: 6.25rem;
+                cursor: pointer;
+                z-index: 10;
+                margin: -50px 20px 0 0;
+                border-radius: 50%;
+                display: inline-block;
+                position: relative;
+                .user-center-content-avator-img{
+                    border-radius: 50%;
+                    height: 100%;
+                    width: 100%;
+                    vertical-align: top;
+                    overflow-clip-margin: content-box;
+                    overflow: clip;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }
