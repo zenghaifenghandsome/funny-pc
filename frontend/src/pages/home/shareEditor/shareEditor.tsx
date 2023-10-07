@@ -1,17 +1,20 @@
-import { Button, Card, Image,Input, Message, Upload} from '@arco-design/web-react';
+import { Button, Card, Image,Input, Message, Modal, Upload} from '@arco-design/web-react';
 import { RequestOptions } from '@arco-design/web-react/es/Upload';
 import { IconDelete, IconEye, IconLeft } from '@arco-design/web-react/icon';
 import { useNavigate } from 'react-router-dom';
-import { api_addShare, api_upload } from '../../../tools/ajax';
-import { useEffect, useState } from 'react';
+import { api_addShare, api_addTopic, api_upload } from '../../../tools/ajax';
+import { useEffect, useState,useRef } from 'react';
 import { useSelector } from 'react-redux';
 import Tribute from 'tributejs';
-
+import { v4 as uuidv4 } from 'uuid';
 
 const ShareEditor = () => {
     const userinfo = useSelector((state:any) => state.user.value);
     const [content,setContent] = useState<string>();
+    const [topicContent,setTopicContent] = useState<string>('');
     const [picList,setPicList] = useState<Array<string>>([]);
+    const [visible,setVisible] = useState<boolean>(false);
+    const addTopicRef = useRef<any>()
     const [atList, setAtList] = useState([
         {
           key: "1",
@@ -143,14 +146,28 @@ const ShareEditor = () => {
             Message.error(result.msg)
         }
     }
-    
-    window.addEventListener('keydown',e => {
-        e.preventDefault
-        if(e.shiftKey && e.key==='#'){
-            //alert("1")
-            console.log("aa")
+    const addTopic = async () => {
+        let uuid = uuidv4();
+        let topic = {
+            topicuuid:uuid,
+            topicname:topicContent,
+            topictype:"share-topic",
+            topicurl:"http://localhost:5173/#/share/allshare/topic/"+uuid,
+            topiccreator:userinfo.userid+'',
+            topiccontent:"",
         }
-    })
+        console.log(topic)
+        let result:any = await api_addTopic(topic)
+        console.log(result)
+        if(result.status === 200){
+            Message.success(result.msg)
+        }else{
+            Message.error(result.msg)
+        }
+
+        setTopicContent('')
+        setVisible(false)
+    }
     return (
         <>
             <Card style={{width:'100%'}}>
@@ -165,6 +182,13 @@ const ShareEditor = () => {
                 </div>
                 
             </Card>
+            <Modal visible={visible} 
+                onOk={addTopic} 
+                onCancel={()=> setVisible(false)}
+                title='新建话题-让大家参与进来吧'
+                >
+                <Input   value={topicContent} onChange={setTopicContent}/>
+            </Modal>
             <Card style={{height:'90%'}}>
                 <div className="at-demo">
                     <div 
@@ -174,7 +198,7 @@ const ShareEditor = () => {
                     ></div>
                 </div>
                 
-                <div className='shareEditor-topic'>#话题</div>
+                <div className='shareEditor-topic' onClick={()=> setVisible(true)}>#话题</div>
                 <Button onClick={getDataOfEditorMultiple}>查看内容</Button>
                     { picList.length >= 1 ?  picList.map(pic =>(
                         <Image 

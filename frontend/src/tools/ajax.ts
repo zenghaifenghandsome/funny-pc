@@ -35,6 +35,9 @@ export const api_upload = (file:any) => ajax(baseURL+"/update",file,"POST")
 // share
 export const api_addShare = (share:any) => ajax(baseURL+"/share/add",share,"POST")
 export const api_getAllShare = () => ajax(baseURL+"/share/getAll")
+//topic
+export const api_addTopic = (topic:any) => ajax(baseURL+"/topic",topic,"POST")
+
 //bc
 export const api_addBc = (bc:any) => ajax(baseURL+"/biancheng",bc,"POST")
 export const api_getAllBCs = () => ajax(baseURL+"/biancheng")
