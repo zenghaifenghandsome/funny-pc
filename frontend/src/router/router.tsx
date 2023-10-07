@@ -30,7 +30,7 @@ const ShareClassHome = lazy(() => import('../pages/home/shareClass/shareClassHom
 const ShareClassHot = lazy(() => import('../pages/home/shareClass/shareClassHot'))
 const OwnerPage = lazy(() => import('../pages/userCenter/pages/ownerPage'))
 const OwnerAttention = lazy(() => import('../pages/userCenter/pages/ownerAttention'))
-
+const ShareUser = lazy(() => import('../pages/home/shares/shareUser'))
 const router:RouteObject[] = [
     {
         path:'/',
@@ -55,6 +55,9 @@ const router:RouteObject[] = [
                     },{
                         path:'/share/friends',
                         element: <ShareFriends />
+                    },{
+                        path:'/share/u/:id',
+                        element: <ShareUser />
                     }
                 ]
             },{

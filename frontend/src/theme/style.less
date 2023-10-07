@@ -84,6 +84,91 @@
     cursor: pointer;
     color: blueviolet;
 }
+.shareEditor-topic{
+    font-size:20px;
+    font-weight:500;
+    width:60px;
+}
+.shareEditor-topic:hover{
+    color:var(--w-main);
+    cursor:pointer;
+    background-color: var(--w-brand);
+    border: 1px solid var(--w-brand);
+    border-radius:20px;
+}
+.at-demo {
+    background-color: #fff;
+    padding: 0px;
+    .at-item, .pound-item {
+        color: #2ba6cb;
+    }
+}
+.tribute-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: auto;
+    overflow: auto;
+    display: block;
+    z-index: 999999;
+  }
+  .tribute-container ul {
+    margin: 0;
+    margin-top: 2px;
+    padding: 0;
+    list-style: none;
+    background: #fff;
+    border: 1px solid #3c98fa;
+    border-radius: 4px;
+  }
+  .tribute-container li {
+    padding: 5px 5px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .tribute-container li.highlight {
+    background: #eee;
+  }
+  .tribute-container li span {
+    font-weight: bold;
+  }
+  .tribute-container li.no-match {
+    cursor: default;
+  }
+  .tribute-container .menu-highlighted {
+    font-weight: bold;
+}
+.tribute-demo-input {
+  outline: none;
+  border: 1px solid #d9d9d9;
+  padding: 4px 11px;
+  border-radius: 2px;
+  font-size: 15px;
+  min-height: 100px;
+  cursor: text;
+}
+.tribute-demo-input:hover {
+  border-color: #3c98fa;
+  transition: all 0.3s;
+}
+.tribute-demo-input:focus {
+  border-color: #3c98fa;
+}
+[contenteditable="true"]:empty:before {
+  content: attr(placeholder);
+  display: block;
+  color: #ccc;
+}
+#test-autocomplete-container {
+  position: relative;
+}
+#test-autocomplete-textarea-container {
+  position: relative;
+}
+.float-right {
+  float: right;
+}
+
 .user-center{
     display: flex;
     margin: auto;

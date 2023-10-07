@@ -42,6 +42,7 @@ const ShareClassHome = () => {
                 <Affix offsetTop={108}>
                     <div className='home-right'>
                         <div className='home-right-main'>热搜</div>
+                        <div>aa</div>
                     </div>
                 </Affix>
             </div>
